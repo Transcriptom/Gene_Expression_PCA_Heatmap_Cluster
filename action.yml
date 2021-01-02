@@ -9,11 +9,17 @@ inputs:
   group:  # sample group file path
     description: 'the file path of sample group'
     required: true
-    default: 'group.txt'
+    default: 'group'
+
+outputs:
+  outfile: 
+    description: "out put pdf file"
+    value: "pca.pdf"
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.fpkm }} 
-    - ${{ inputs.group }}
+  using: "composite"
+  steps: 
+    - id: Do-PCA
+      run: Rscript FPKM_PCA_Heatmap_Cluster.R ${{ inputs.fpkm }} ${{ inputs.group }}
+      shell: bash
+
