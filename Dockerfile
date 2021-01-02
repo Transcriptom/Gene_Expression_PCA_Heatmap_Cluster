@@ -4,6 +4,8 @@ FROM rocker/r-ver:4.0.3
 MAINTAINER Zan Yuan <seqyuan@gmail.com>
 ENV LANG=en_US.UTF-8
 
+RUN R -e "install.packages(c('ggplot2','BiocManager'))"
+RUN R -e "BiocManager::install(c('patchwork','cowplot'))"
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
