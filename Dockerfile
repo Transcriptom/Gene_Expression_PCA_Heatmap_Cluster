@@ -1,5 +1,9 @@
 # Container image that runs your code
-FROM alpine:3.10
+FROM rocker/r-ver:4.0.3 
+
+MAINTAINER Zan Yuan <seqyuan@gmail.com>
+ENV LANG=en_US.UTF-8
+
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh

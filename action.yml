@@ -1,15 +1,18 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Gene_Expression_PCA_Heatmap_Cluster'
+description: 'Do PCA heatmap and sample cluster for a gene expression matrix'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  fpkm:  # fpkm matrix file path
+    description: 'the file path of fpkm matrix'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: 'fpkm.xls'
+
+  group:  # sample group file path
+    description: 'the file path of sample group'
+    required: true
+    default: 'group.txt'
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.fpkm }} ${{ inputs.fpkm }}

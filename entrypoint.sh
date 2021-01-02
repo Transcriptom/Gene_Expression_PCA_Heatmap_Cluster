@@ -1,5 +1,2 @@
 #!/bin/sh -l
-
-echo "Hello $1"
-time=$(date)
-echo ::set-output name=time::$time
+Rscript FPKM_PCA_Heatmap_Cluster.R $1 $2
