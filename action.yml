@@ -17,9 +17,9 @@ outputs:
     value: "pca.pdf"
 
 runs:
-  using: "composite"
-  steps: 
-    - id: Do-PCA
-      run: Rscript FPKM_PCA_Heatmap_Cluster.R ${{ inputs.fpkm }} ${{ inputs.group }}
-      shell: bash
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.fpkm }} 
+    - ${{ inputs.group }}
 
